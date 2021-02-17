@@ -1,2 +1,2 @@
 # CalculatorForAllCalculationsAndFomulas
-This is a calculator built with python that is supposed to be able to calculate everything
+This is called a calculator, but my dreams for it actually resemble something to that of JARVIS in iron man. Obviosly I know that what I have right now is nowhere near that and probably will never get there, but the idea is that you can type anything into the input and the program will be able to perform the desired task for you. If you run the code you will realize that it is a pretty bad program because I am pretty newbie at python and coding, so if you want to help me add some things, all ideas will be considered. 

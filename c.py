@@ -183,4 +183,4 @@ while vari < 10:
 		secondNumberTxt = input("Type the second number you want to calculate: ")
 		print(firstNumberTxt ** secondNumberTxt)
 	if equation == "quit" or equation == "q" or equation == "exit" or equation == "done":
-		exit()
+		

@@ -99,12 +99,12 @@ while vari < 10:
 		print("")
 
 
-	if equation == "Manual Shortcuts" or equation = "MShort"
+	if equation == "manual shortcuts" or equation == "mshort":
 		
 		print("")
-		print ("All Manual Shorcuts Or Short Froms:")
+		print ("All Manual Shorcuts Or Short Forms:")
 		print("")
-		print("Manual Shortcuts = \"MShort\"")
+		print("Manual Shortcuts: \"MShort\"")
 		print("Add Fractions: \"fracadd\"")
 		print("Addition: \"add\", \"+\"")
 		print("Alphabetical Order: \"alphaorder\"")

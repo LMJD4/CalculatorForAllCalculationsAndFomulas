@@ -75,6 +75,8 @@ while vari < 10:
 	
 	if equation == "man" or equation == "manual":
 	
+		print("")
+		print("Manual Shortcuts")
 		print("Add Fractions")
 		print("Addition")
 		print("Alphabetical Order")
@@ -94,9 +96,36 @@ while vari < 10:
 		print("Square Root")
 		print("Subtract Fractions")
 		print("Subtraction")
-	
+		print("")
 
 
+	if equation == "manual shortcuts" or equation == "mshort":
+		
+		print("")
+		print ("All Manual Shorcuts Or Short Forms:")
+		print("")
+		print("Manual Shortcuts: \"MShort\"")
+		print("Add Fractions: \"fracadd\"")
+		print("Addition: \"add\", \"+\"")
+		print("Alphabetical Order: \"alphaorder\"")
+		print("Distance: \"length\"")
+		print("Divide Fractions: \"divfrac\"")
+		print("Division: \"divide\", \"/\"")
+		print("Find Factors: \"factors\"")
+		print("Greatest Common Divisor: \"gcd\"")
+		print("Lowest Common Multiple: \"lcm\"")
+		print("Midpoint: \"mid\"")
+		print("Multiplication: \"multiply\", \"times\", \"*\"")
+		print("Multiply Fractions: \"multfrac\"")
+		print("Power: \"to the power of\"")
+		print("Prime numbers: \"prime\", \"composite\"")
+		print("Quadratic Formula: \"roots\"")
+		print("Slope: *no shortcuts*")
+		print("Square root: \"sqrt\"")
+		print("Subtract Fractions: \"subfrac\"")
+		print("Subtraction: \"minus\", \"subtract\", \"-\", \"sub\"")
+		print("")
+		
 #start of sections
 
 #quadratic formula
@@ -167,7 +196,7 @@ while vari < 10:
 	
 
 #midpoint
-	if equation == "midpoint":
+	if equation == "midpoint" or equation == "mid":
 		X1TXT = input("X1: ")
 		X1 = int(X1TXT)
 		Y1TXT = input("Y1: ")
@@ -210,7 +239,7 @@ while vari < 10:
 	
 
 #squareroot
-	if equation == "squareroot" or equation == "sqrt" or equation == "squareroot":
+	if equation == "squareroot" or equation == "sqrt" or equation == "square root":
 		numberTXT = input("Type the number: ")
 		number = int(numberTXT)
 		if number < 0:
@@ -329,7 +358,7 @@ while vari < 10:
 		print(firstNumberTXT+secondNumberTXT)
 	
 #subtract	
-	if equation == "subtraction" or equation == "minus" or equation == "subtract" or equation == "-":
+	if equation == "subtraction" or equation == "minus" or equation == "subtract" or equation == "-" or equation == "sub":
 		firstNumberTXT = input("Type the first number you want to calculate: ")
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")

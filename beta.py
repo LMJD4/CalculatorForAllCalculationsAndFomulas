@@ -119,7 +119,7 @@ while vari < 10:
 		print("Multiply Fractions: \"multfrac\"")
 		print("Power: \"to the power of\"")
 		print("Prime numbers: \"prime\", \"composite\"")
-		print("Quadratic Formula: \"roots\"")
+		print("Quadratic Formula: \"roots\", \"quadratic formula\", \"quadForm\"")
 		print("Slope: *no shortcuts*")
 		print("Square root: \"sqrt\"")
 		print("Subtract Fractions: \"subfrac\"")
@@ -129,28 +129,24 @@ while vari < 10:
 #start of sections
 
 #quadratic formula
-	if equation == "quadratic formula" or equation == "roots":
+	if equation == "quadratic formula" or equation == "roots" or equation == "quadform":
 		qfa = int(input("Enter A: "))
 		qfb = int(input("Enter B: "))
 		qfc = int(input("Enter C: "))
 		qfradicand = qfb * qfb
-		qfradicand = qfradicand - 4*qfa*qfc
+		qfradicand = qfradicand + -4*qfa*qfc
 		denominator = 2 * qfa
 		try:
 			qftestRT = math.sqrt(qfradicand)
-			if qftestRT == math.ceil(qftestRT):
-				qfradicand = qftestRT
-				qfroot1 = 0-qfb + qfradicand
-				qfroot1 = fractioner(int(qfroot1), int(denominator))
-				qfroot2 = 0-qfb - qfradicand
-				qfroot2 = fractioner(int(qfroot2),int(denominator))
-			else:
-				qfroot1 = str(0-qfb) + " +el " + reduceRoots(qfradicand) + " / " + str(denominator)
-				qfroot2 = str(0-qfb) + " -el " + reduceRoots(qfradicand) + " / " + str(denominator)
+			qfradicand = qftestRT
+			qfroot1 = 0-qfb + qfradicand
+			qfroot1 = fractioner(int(qfroot1), int(denominator))
+			qfroot2 = 0-qfb - qfradicand
+			qfroot2 = fractioner(int(qfroot2),int(denominator))
+				
 		except Exception as exception0:
-			print(exception0)
-			qfroot1 = str(0-qfb) + " + " + " sqrtex " + str(qfradicand) + " / " + str(denominator)
-			qfroot2 = str(0-qfb) + " - " + " sqrtex " + str(qfradicand) + " / " + str(denominator)
+			qfroot1 = "(" + str(0-qfb) + " + " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
+			qfroot2 = "(" + str(0-qfb) + " - " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
 		print(qfroot1)
 		print(qfroot2)
 

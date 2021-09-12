@@ -24,7 +24,7 @@ while vari < 10:
 		finalNumerator = numerator/theGCD
 		finalDenominator = denominator/theGCD
 		if finalDenominator == 1:
-			return finalNumerator
+			return int(finalNumerator)
 		if finalDenominator != 1:
 			return str(int(finalNumerator)) + "/" + str(int(finalDenominator))
 			
@@ -119,7 +119,7 @@ while vari < 10:
 		print("Multiply Fractions: \"multfrac\"")
 		print("Power: \"to the power of\"")
 		print("Prime numbers: \"prime\", \"composite\"")
-		print("Quadratic Formula: \"roots\"")
+		print("Quadratic Formula: \"roots\", \"quadratic formula\", \"quadForm\"")
 		print("Slope: *no shortcuts*")
 		print("Square root: \"sqrt\"")
 		print("Subtract Fractions: \"subfrac\"")
@@ -129,28 +129,24 @@ while vari < 10:
 #start of sections
 
 #quadratic formula
-	if equation == "quadratic formula" or equation == "roots":
+	if equation == "quadratic formula" or equation == "roots" or equation == "quadform":
 		qfa = int(input("Enter A: "))
 		qfb = int(input("Enter B: "))
 		qfc = int(input("Enter C: "))
 		qfradicand = qfb * qfb
-		qfradicand = qfradicand - 4*qfa*qfc
+		qfradicand = qfradicand + -4*qfa*qfc
 		denominator = 2 * qfa
 		try:
 			qftestRT = math.sqrt(qfradicand)
-			if qftestRT == math.ceil(qftestRT):
-				qfradicand = qftestRT
-				qfroot1 = 0-qfb + qfradicand
-				qfroot1 = fractioner(int(qfroot1), int(denominator))
-				qfroot2 = 0-qfb - qfradicand
-				qfroot2 = fractioner(int(qfroot2),int(denominator))
-			else:
-				qfroot1 = str(0-qfb) + " +el " + reduceRoots(qfradicand) + " / " + str(denominator)
-				qfroot2 = str(0-qfb) + " -el " + reduceRoots(qfradicand) + " / " + str(denominator)
+			qfradicand = qftestRT
+			qfroot1 = 0-qfb + qfradicand
+			qfroot1 = fractioner(int(qfroot1), int(denominator))
+			qfroot2 = 0-qfb - qfradicand
+			qfroot2 = fractioner(int(qfroot2),int(denominator))
+				
 		except Exception as exception0:
-			print(exception0)
-			qfroot1 = str(0-qfb) + " + " + " sqrtex " + str(qfradicand) + " / " + str(denominator)
-			qfroot2 = str(0-qfb) + " - " + " sqrtex " + str(qfradicand) + " / " + str(denominator)
+			qfroot1 = "(" + str(0-qfb) + " + " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
+			qfroot2 = "(" + str(0-qfb) + " - " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
 		print(qfroot1)
 		print(qfroot2)
 
@@ -255,8 +251,8 @@ while vari < 10:
 #alphabetical order	
 	if equation == "alphabetical order" or equation == "alphaorder":
 		while vari < 10:
-			alphaPhrase = input("Type your phrases in 1 at a time: ")
-			if alphaPhrase == "done":
+			alphaPhrase = input("Type your phrases in 1 at a time ('/done' to exit): ")
+			if alphaPhrase == "/done":
 				print(sorted(alphaOrderArr))
 				alphaOrderArr.clear()
 				break
@@ -279,9 +275,14 @@ while vari < 10:
 		FracAddMul2 = FracAddLcm/deno2
 		FracAddNu1 = Nu1 * FracAddMul1
 		FracAddNu2 = Nu2 * FracAddMul2
-		FracAddDeno = FracAddLcm
-		FracAddNu = FracAddNu1 + FracAddNu2
-		print(str(FracAddNu) + "/" + str(FracAddDeno))
+		FracAddDeno = int(FracAddLcm)
+		FracAddNu = int(FracAddNu1 + FracAddNu2)
+		FracAddOut = str(FracAddNu) + "/" + str(FracAddDeno)
+		FracAddRedOut = str(fractioner(FracAddNu, FracAddDeno))
+		print(FracAddOut)
+		if FracAddOut != FracAddRedOut:
+			print(FracAddRedOut)
+		
 	
 
 #Subtract Fractions
@@ -299,9 +300,13 @@ while vari < 10:
 		FracSubMul2 = FracSubLcm/deno2
 		FracSubNu1 = Nu1 * FracSubMul1
 		FracSubNu2 = Nu2 * FracSubMul2
-		FracSubDeno = FracSubLcm
-		FracSubNu = FracSubNu1 - FracSubNu2
-		print(str(FracSubNu) + "/" + str(FracSubDeno))
+		FracSubDeno = int(FracSubLcm)
+		FracSubNu = int(FracSubNu1 - FracSubNu2)
+		FracSubOut = str(FracSubNu) + "/" + str(FracSubDeno)
+		FracSubRedOut =  str(fractioner(FracSubNu, FracSubDeno))
+		print(FracSubOut)
+		if FracSubOut != FracSubRedOut:
+			print(FracSubRedOut)
 	
 #Multiply Fractions	
 	if equation == "fracmult" or equation == "multiply fractions" or equation == "multfrac":
@@ -313,9 +318,13 @@ while vari < 10:
 		Nu2 = int(Nu2TXT)
 		deno2TXT = input("Denominator2: ")
 		deno2 = int(deno2TXT)
-		FracMultNu = Nu1 * Nu2
-		FracMultDeno = deno1 * deno2
-		print(str(FracMultNu) + "/" + str(FracMultDeno))
+		FracMultNu = int(Nu1 * Nu2)
+		FracMultDeno = int(deno1 * deno2)
+		FracMultOut = str(FracMultNu) + "/" + str(FracMultDeno)
+		FracMultRedOut = str(fractioner(FracMultNu, FracMultDeno))
+		print(FracMultOut)
+		if FracMultOut != FracMultRedOut:
+			print(FracMultRedOut)
 	
 
 #Divide Fractions	
@@ -328,9 +337,13 @@ while vari < 10:
 		Nu2 = int(Nu2TXT)
 		deno2TXT = input("Denominator2: ")
 		deno2 = int(deno2TXT)
-		FracDivNu = Nu1 * deno2
-		FracDivDeno = deno1 * Nu2
-		print(str(FracDivNu) + "/" + str(FracDivDeno))
+		FracDivNu = int(Nu1 * deno2)
+		FracDivDeno = int(deno1 * Nu2)
+		FracDivOut = str(FracDivNu) + "/" + str(FracDivDeno)
+		FracDivRedOut = str(fractioner(FracDivNu, FracDivDeno))
+		print(FracDivOut)
+		if FracDivOut != FracDivRedOut:
+			print(FracDivRedOut)
 
 	
 #Lowest common multiple	
@@ -355,7 +368,7 @@ while vari < 10:
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
 		secondNumber = int(secondNumberTXT)
-		print(firstNumberTXT+secondNumberTXT)
+		print(firstNumber+secondNumber)
 	
 #subtract	
 	if equation == "subtraction" or equation == "minus" or equation == "subtract" or equation == "-" or equation == "sub":
@@ -363,7 +376,7 @@ while vari < 10:
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
 		secondNumber = int(secondNumberTXT)
-		print(firstNumberTXT - secondNumberTXT)
+		print(firstNumber - secondNumber)
 	
 #multiply	
 	if equation == "multiplication" or equation == "multiply" or equation == "times" or equation == "*":
@@ -371,7 +384,7 @@ while vari < 10:
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
 		secondNumber = int(secondNumberTXT)
-		print(firstNumberTXT * secondNumberTXT)
+		print(firstNumber * secondNumber)
 	
 #divide	
 	if equation == "division" or equation == "divide" or equation == "/":
@@ -391,8 +404,12 @@ while vari < 10:
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
 		secondNumber = int(secondNumberTXT)
-		print(firstNumberTXT ** secondNumberTXT)
+		print(firstNumber ** secondNumber)
 	
 #end program	
 	if equation == "quit" or equation == "q" or equation == "done":
 		break
+		
+#no function
+	else:
+		print("This program cannot complete that function at the time \nIf you have a request for a new function, please leave it on the issues page of the github repo (https://github.com/LMJD4/CalculatorForAllCalculationsAndFomulas/issues)\n")

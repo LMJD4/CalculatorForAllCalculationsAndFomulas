@@ -251,8 +251,8 @@ while vari < 10:
 #alphabetical order	
 	if equation == "alphabetical order" or equation == "alphaorder":
 		while vari < 10:
-			alphaPhrase = input("Type your phrases in 1 at a time: ")
-			if alphaPhrase == "done":
+			alphaPhrase = input("Type your phrases in 1 at a time ('/done' to exit): ")
+			if alphaPhrase == "/done":
 				print(sorted(alphaOrderArr))
 				alphaOrderArr.clear()
 				break
@@ -409,3 +409,7 @@ while vari < 10:
 #end program	
 	if equation == "quit" or equation == "q" or equation == "done":
 		break
+		
+#no function
+	else:
+		print("This program cannot complete that function at the time \nIf you have a request for a new function, please leave it on the issues page of the github repo (https://github.com/LMJD4/CalculatorForAllCalculationsAndFomulas/issues)\n")

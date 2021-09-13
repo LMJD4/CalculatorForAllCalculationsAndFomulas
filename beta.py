@@ -62,7 +62,7 @@ while vari < 10:
 		else:
 			output = str(rootExp) + " root " + str(radArg)
 		return output
-				
+	
 
 
 
@@ -99,7 +99,7 @@ while vari < 10:
 		print("")
 
 
-	if equation == "manual shortcuts" or equation == "mshort":
+	elif equation == "manual shortcuts" or equation == "mshort":
 		
 		print("")
 		print ("All Manual Shorcuts Or Short Forms:")
@@ -129,34 +129,37 @@ while vari < 10:
 #start of sections
 
 #quadratic formula
-	if equation == "quadratic formula" or equation == "roots" or equation == "quadform":
-		qfa = int(input("Enter A: "))
-		qfb = int(input("Enter B: "))
-		qfc = int(input("Enter C: "))
-		qfradicand = qfb * qfb
-		qfradicand = qfradicand + -4*qfa*qfc
-		denominator = 2 * qfa
+	elif equation == "quadratic formula" or equation == "roots" or equation == "quadform":
 		try:
-			qftestRT = math.sqrt(qfradicand)
-			qfradicand = qftestRT
-			qfroot1 = 0-qfb + qfradicand
-			qfroot1 = fractioner(int(qfroot1), int(denominator))
-			qfroot2 = 0-qfb - qfradicand
-			qfroot2 = fractioner(int(qfroot2),int(denominator))
-				
+			qfa = int(input("Enter A: "))
+			qfb = int(input("Enter B: "))
+			qfc = int(input("Enter C: "))
+			qfradicand = qfb * qfb
+			qfradicand = qfradicand + -4*qfa*qfc
+			denominator = 2 * qfa
+			try:
+				qftestRT = math.sqrt(qfradicand)
+				qfradicand = qftestRT
+				qfroot1 = 0-qfb + qfradicand
+				qfroot1 = fractioner(int(qfroot1), int(denominator))
+				qfroot2 = 0-qfb - qfradicand
+				qfroot2 = fractioner(int(qfroot2),int(denominator))
+
+			except Exception as exception01:
+				qfroot1 = "(" + str(0-qfb) + " + " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
+				qfroot2 = "(" + str(0-qfb) + " - " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
+			print(qfroot1)
+			print(qfroot2)
 		except Exception as exception0:
-			qfroot1 = "(" + str(0-qfb) + " + " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
-			qfroot2 = "(" + str(0-qfb) + " - " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
-		print(qfroot1)
-		print(qfroot2)
+			print("One or more invalid inputs were entered")
 
 #factors
-	if equation == "factors" or equation == "find factors" :
+	elif equation == "factors" or equation == "find factors" :
 		theNumberTXT = input("Type the number: ")
 		print(findFactors(int(theNumberTXT)))
 	
 #Prime and composite numbers	
-	if equation == "prime numbers" or equation == "composite numbers"  or equation == "composite" or equation == "prime":
+	elif equation == "prime numbers" or equation == "composite numbers"  or equation == "composite" or equation == "prime":
 		theNumberTXT = input("Type the number: ")
 		theNumber = int(theNumberTXT)
 		for x in range(2, theNumber):
@@ -171,7 +174,7 @@ while vari < 10:
 	
 
 #distance	
-	if equation == "distance" or equation == "length":
+	elif equation == "distance" or equation == "length":
 		X1TXT = input("X1: ")
 		X1 = int(X1TXT)
 		Y1TXT = input("Y1: ")
@@ -192,7 +195,7 @@ while vari < 10:
 	
 
 #midpoint
-	if equation == "midpoint" or equation == "mid":
+	elif equation == "midpoint" or equation == "mid":
 		X1TXT = input("X1: ")
 		X1 = int(X1TXT)
 		Y1TXT = input("Y1: ")
@@ -209,7 +212,7 @@ while vari < 10:
 	
 
 #slope	
-	if equation == "slope":
+	elif equation == "slope":
 		X1TXT = input("X1: ")
 		X1 = int(X1TXT)
 		Y1TXT = input("Y1: ")
@@ -235,7 +238,7 @@ while vari < 10:
 	
 
 #squareroot
-	if equation == "squareroot" or equation == "sqrt" or equation == "square root":
+	elif equation == "squareroot" or equation == "sqrt" or equation == "square root":
 		numberTXT = input("Type the number: ")
 		number = int(numberTXT)
 		if number < 0:
@@ -249,7 +252,7 @@ while vari < 10:
 				print(reduceRoots(number))
 		
 #alphabetical order	
-	if equation == "alphabetical order" or equation == "alphaorder":
+	elif equation == "alphabetical order" or equation == "alphaorder":
 		while vari < 10:
 			alphaPhrase = input("Type your phrases in 1 at a time ('/done' to exit): ")
 			if alphaPhrase == "/done":
@@ -261,7 +264,7 @@ while vari < 10:
 	
 
 #Add Fractions
-	if equation == "fracadd" or equation == "add fractions" or equation == "fraction add" or equation == "addfrac":
+	elif equation == "fracadd" or equation == "add fractions" or equation == "fraction add" or equation == "addfrac":
 		Nu1TXT = input("Numerator1: ")
 		Nu1 = int(Nu1TXT)
 		deno1TXT = input("Denominator1: ")
@@ -286,7 +289,7 @@ while vari < 10:
 	
 
 #Subtract Fractions
-	if equation == "fracsub" or equation == "subtract fractions" or equation == "subfrac":
+	elif equation == "fracsub" or equation == "subtract fractions" or equation == "subfrac":
 		Nu1TXT = input("Numerator1: ")
 		Nu1 = int(Nu1TXT)
 		deno1TXT = input("Denominator1: ")
@@ -309,7 +312,7 @@ while vari < 10:
 			print(FracSubRedOut)
 	
 #Multiply Fractions	
-	if equation == "fracmult" or equation == "multiply fractions" or equation == "multfrac":
+	elif equation == "fracmult" or equation == "multiply fractions" or equation == "multfrac":
 		Nu1TXT = input("Numerator1: ")
 		Nu1 = int(Nu1TXT)
 		deno1TXT = input("Denominator1: ")
@@ -328,7 +331,7 @@ while vari < 10:
 	
 
 #Divide Fractions	
-	if equation == "fracdiv" or equation == "divide fractions" or equation == "divfrac": 
+	elif equation == "fracdiv" or equation == "divide fractions" or equation == "divfrac": 
 		Nu1TXT = input("Numerator1: ")
 		Nu1 = int(Nu1TXT)
 		deno1TXT = input("Denominator1: ")
@@ -347,7 +350,7 @@ while vari < 10:
 
 	
 #Lowest common multiple	
-	if equation == "lcm" or equation == "lowest common multiple":
+	elif equation == "lcm" or equation == "lowest common multiple":
 		firstNumberTXT = input("Type the first number you want to calculate: ")
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
@@ -355,7 +358,7 @@ while vari < 10:
 		print(lcm(firstNumber, secondNumber))
 	
 #Greatest common divisor	
-	if equation == "gcd" or equation == "greatest common divisor":
+	elif equation == "gcd" or equation == "greatest common divisor":
 		firstNumberTXT = input("Type the first number you want to calculate: ")
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
@@ -363,7 +366,7 @@ while vari < 10:
 		print(math.gcd(firstNumber, secondNumber))
 	
 #add	
-	if equation == "addition" or equation == "add" or equation == "+":
+	elif equation == "addition" or equation == "add" or equation == "+":
 		firstNumberTXT = input("Type the first number you want to calculate: ")
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
@@ -371,7 +374,7 @@ while vari < 10:
 		print(firstNumber+secondNumber)
 	
 #subtract	
-	if equation == "subtraction" or equation == "minus" or equation == "subtract" or equation == "-" or equation == "sub":
+	elif equation == "subtraction" or equation == "minus" or equation == "subtract" or equation == "-" or equation == "sub":
 		firstNumberTXT = input("Type the first number you want to calculate: ")
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
@@ -379,7 +382,7 @@ while vari < 10:
 		print(firstNumber - secondNumber)
 	
 #multiply	
-	if equation == "multiplication" or equation == "multiply" or equation == "times" or equation == "*":
+	elif equation == "multiplication" or equation == "multiply" or equation == "times" or equation == "*":
 		firstNumberTXT = input("Type the first number you want to calculate: ")
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
@@ -387,7 +390,7 @@ while vari < 10:
 		print(firstNumber * secondNumber)
 	
 #divide	
-	if equation == "division" or equation == "divide" or equation == "/":
+	elif equation == "division" or equation == "divide" or equation == "/":
 		firstNumberTXT = input("Type the first number you want to calculate: ")
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
@@ -399,7 +402,7 @@ while vari < 10:
 		print(str(firstNumberFraction) + "/" + str(secondNumberFraction) + "(" + str(de) + ")" )
 	
 #power	
-	if equation == "power" or equation == "to the power of":
+	elif equation == "power" or equation == "to the power of":
 		firstNumberTXT = input("Type the first number you want to calculate: ")
 		firstNumber = int(firstNumberTXT)
 		secondNumberTXT = input("Type the second number you want to calculate: ")
@@ -407,7 +410,7 @@ while vari < 10:
 		print(firstNumber ** secondNumber)
 	
 #end program	
-	if equation == "quit" or equation == "q" or equation == "done":
+	elif equation == "quit" or equation == "q" or equation == "done":
 		break
 		
 #no function

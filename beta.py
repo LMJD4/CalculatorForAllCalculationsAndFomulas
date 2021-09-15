@@ -372,67 +372,59 @@ while vari < 10:
 			secondNumber = int(input("Type the second number you want to calculate: "))
 			print(math.gcd(firstNumber, secondNumber))
 		except Exception as exception12:
-			print("One or more invalid inputs were entered\n")
-
-			
-			
-			
-			
-			
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-			
-			
-			
-			
-			
-			
-			
+			print("One or more invalid inputs were entered\n")			
 			
 #add	
 	elif equation == "addition" or equation == "add" or equation == "+":
 		try:
 			firstNumber = float(input("Type the first number you want to calculate: "))
 			secondNumber = float(input("Type the second number you want to calculate: "))
-			num = firstNumber + secondNumber
-			print(removeDecimal(num))
+			print(removeDecimal(firstNumber + secondNumber))
 		except Exception as exception13:
 			print("One or more invalid inputs were entered\n")
 	
 #subtract	
 	elif equation == "subtraction" or equation == "minus" or equation == "subtract" or equation == "-" or equation == "sub":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		print(firstNumber - secondNumber)
+		try:
+			firstNumber = float(input("Type the first number you want to calculate: "))
+			secondNumber = float(input("Type the second number you want to calculate: "))
+			print(removeDecimal(firstNumber - secondNumber))
+		except Exception as exception14:
+			print("One or more invalid inputs were entered\n")
 	
 #multiply	
 	elif equation == "multiplication" or equation == "multiply" or equation == "times" or equation == "*":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		print(firstNumber * secondNumber)
+		try:
+			firstNumber = float(input("Type the first number you want to calculate: "))
+			secondNumber = float(input("Type the second number you want to calculate: "))
+			print(removeDecimal(firstNumber * secondNumber))
+		except Exception as exception15:
+			print("One or more invalid inputs were entered\n")
 	
 #divide	
 	elif equation == "division" or equation == "divide" or equation == "/":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		d = math.gcd(firstNumber, secondNumber)
-		firstNumberFraction = firstNumber/d
-		secondNumberFraction = secondNumber/d
-		de = Decimal(firstNumber/float(secondNumber))
-		print(str(firstNumberFraction) + "/" + str(secondNumberFraction) + "(" + str(de) + ")" )
+		try:
+			firstNumber = float(input("Type the first number you want to calculate: "))
+			secondNumber = float(input("Type the second number you want to calculate: "))
+			de = Decimal(firstNumber/secondNumber)
+			if math.ceil(firstNumber) == firstNumber and math.ceil(secondNumber) == secondNumber:
+				d = math.gcd(removeDecimal(firstNumber), removeDecimal(secondNumber))
+				firstNumberFraction = removeDecimal(firstNumber/d)
+				secondNumberFraction = removeDecimal(secondNumber/d)
+				print(str(firstNumberFraction) + "/" + str(secondNumberFraction) + "(" + str(de) + ")" )
+			else:
+				print(de)
+		except Exception as exception16:
+			print("One or more invalid inputs were entered\n")
 	
 #power	
 	elif equation == "power" or equation == "to the power of":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		print(firstNumber ** secondNumber)
+		try:
+			firstNumber = float(input("Type the first number you want to calculate: "))
+			secondNumber = float(input("Type the second number you want to calculate: "))
+			print(removeDecimal(firstNumber ** secondNumber))
+		except Exception as exception17:
+			print("One or more invalid inputs were entered\n")
 	
 #end program	
 	elif equation == "quit" or equation == "q" or equation == "done":

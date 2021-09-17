@@ -13,6 +13,13 @@ varia = 2
 while vari < 10:
 
 	#functions
+	def removeDecimal(num):
+		if(math.ceil(num) == num):
+			output = int(num)
+		else:
+			output = num
+		return output
+	
 	def lcm(k,l):
 		return k*l/(math.gcd(k,l))
 
@@ -62,7 +69,7 @@ while vari < 10:
 		else:
 			output = str(rootExp) + " root " + str(radArg)
 		return output
-				
+	
 
 
 
@@ -99,7 +106,7 @@ while vari < 10:
 		print("")
 
 
-	if equation == "manual shortcuts" or equation == "mshort":
+	elif equation == "manual shortcuts" or equation == "mshort":
 		
 		print("")
 		print ("All Manual Shorcuts Or Short Forms:")
@@ -129,127 +136,133 @@ while vari < 10:
 #start of sections
 
 #quadratic formula
-	if equation == "quadratic formula" or equation == "roots" or equation == "quadform":
-		qfa = int(input("Enter A: "))
-		qfb = int(input("Enter B: "))
-		qfc = int(input("Enter C: "))
-		qfradicand = qfb * qfb
-		qfradicand = qfradicand + -4*qfa*qfc
-		denominator = 2 * qfa
+	elif equation == "quadratic formula" or equation == "roots" or equation == "quadform":
 		try:
-			qftestRT = math.sqrt(qfradicand)
-			qfradicand = qftestRT
-			qfroot1 = 0-qfb + qfradicand
-			qfroot1 = fractioner(int(qfroot1), int(denominator))
-			qfroot2 = 0-qfb - qfradicand
-			qfroot2 = fractioner(int(qfroot2),int(denominator))
-				
+			qfa = int(input("Enter A: "))
+			qfb = int(input("Enter B: "))
+			qfc = int(input("Enter C: "))
+			qfradicand = qfb * qfb
+			qfradicand = qfradicand + -4*qfa*qfc
+			denominator = 2 * qfa
+			try:
+				qftestRT = math.sqrt(qfradicand)
+				qfradicand = qftestRT
+				qfroot1 = 0-qfb + qfradicand
+				qfroot1 = fractioner(int(qfroot1), int(denominator))
+				qfroot2 = 0-qfb - qfradicand
+				qfroot2 = fractioner(int(qfroot2),int(denominator))
+
+			except Exception as exception01:
+				qfroot1 = "(" + str(0-qfb) + " + " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
+				qfroot2 = "(" + str(0-qfb) + " - " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
+			print(qfroot1)
+			print(qfroot2)
 		except Exception as exception0:
-			qfroot1 = "(" + str(0-qfb) + " + " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
-			qfroot2 = "(" + str(0-qfb) + " - " + " sqrt " + str(qfradicand) + ") / " + str(denominator)
-		print(qfroot1)
-		print(qfroot2)
+			print("One or more invalid inputs were entered\n")
 
 #factors
-	if equation == "factors" or equation == "find factors" :
-		theNumberTXT = input("Type the number: ")
-		print(findFactors(int(theNumberTXT)))
+	elif equation == "factors" or equation == "find factors" :
+		try:			
+			theNumber = int(input("Type the number: "))
+			print(findFactors(theNumber))
+		except Exception as exception1:
+			print("One or more invalid inputs were entered\n")
 	
 #Prime and composite numbers	
-	if equation == "prime numbers" or equation == "composite numbers"  or equation == "composite" or equation == "prime":
-		theNumberTXT = input("Type the number: ")
-		theNumber = int(theNumberTXT)
-		for x in range(2, theNumber):
-			if x != theNumber:
-				theNextNumber = theNumber%x
+	elif equation == "prime numbers" or equation == "composite numbers"  or equation == "composite" or equation == "prime":
+		try:
+			theNumber = int(input("Type the number: "))
+			for x in range(2, theNumber):
+				if x != theNumber:
+					theNextNumber = theNumber%x
+				if theNextNumber == 0:
+					break
 			if theNextNumber == 0:
-				break
-		if theNextNumber == 0:
-			print("This is a composite number")
-		else:
-			print("This is a prime number")
+				print("This is a composite number")
+			else:
+				print("This is a prime number")
+		except Exception as exception2:
+			print("One or more invalid inputs were entered\n")
 	
 
 #distance	
-	if equation == "distance" or equation == "length":
-		X1TXT = input("X1: ")
-		X1 = int(X1TXT)
-		Y1TXT = input("Y1: ")
-		Y1 = int(Y1TXT)
-		X2TXT = input("X2: ")
-		X2 = int(X2TXT)
-		Y2TXT = input("Y2: ")
-		Y2 = int(Y2TXT)
-		X = (X2 - X1)**2
-		Y = (Y2 - Y1)**2
-		answer = X+Y
-		sqrtAnswer = sqrt(answer)
-		checker = isinstance(sqrtAnswer, int)
-		if checker == True:
-			print(sqrtAnswer)
-		if checker == False:
-			print(reduceRoots(answer))
+	elif equation == "distance" or equation == "length":
+		try:
+			X1 = int(input("X1: "))
+			Y1 = int(input("Y1: "))
+			X2 = int(input("X2: "))
+			Y2 = int(input("Y2: "))
+			X = (X2 - X1)**2
+			Y = (Y2 - Y1)**2
+			answer = X+Y
+			sqrtAnswer = sqrt(answer)
+			checker = isinstance(sqrtAnswer, int)
+			if checker == True:
+				print(sqrtAnswer)
+			if checker == False:
+				print(reduceRoots(answer))
+		except Exception as exception3:
+			print("One or more invalid inputs were entered\n")
 	
 
 #midpoint
-	if equation == "midpoint" or equation == "mid":
-		X1TXT = input("X1: ")
-		X1 = int(X1TXT)
-		Y1TXT = input("Y1: ")
-		Y1 = int(Y1TXT)
-		X2TXT = input("X2: ")
-		X2 = int(X2TXT)
-		Y2TXT = input("Y2: ")
-		Y2 = int(Y2TXT)
-		XFirstPart = (X1+X2)
-		YFirstPart = (Y1+Y2)
-		X = fractioner(XFirstPart, 2)
-		Y = fractioner(YFirstPart, 2)
-		print(str(X) + "," + str(Y))
+	elif equation == "midpoint" or equation == "mid":
+		try:
+			X1 = int(input("X1: "))
+			Y1 = int(input("Y1: "))
+			X2 = int(input("X2: "))
+			Y2 = int(input("Y2: "))
+			XFirstPart = (X1+X2)
+			YFirstPart = (Y1+Y2)
+			X = fractioner(XFirstPart, 2)
+			Y = fractioner(YFirstPart, 2)
+			print(str(X) + "," + str(Y))
+		except Exception as exception4:
+			print("One or more invalid inputs were entered\n")
 	
-
 #slope	
-	if equation == "slope":
-		X1TXT = input("X1: ")
-		X1 = int(X1TXT)
-		Y1TXT = input("Y1: ")
-		Y1 = int(Y1TXT)
-		X2TXT = input("X2: ")
-		X2 = int(X2TXT)
-		Y2TXT = input("Y2: ")
-		Y2 = int(Y2TXT)
-		Y = Y2-Y1
-		X = X2-X1
-		gcdXY = math.gcd(Y,X)
-		YFrac = Y/gcdXY
-		XFrac = X/gcdXY
-		if XFrac < 0 and YFrac < 0:
-			XFrac = XFrac * -1
-			YFrac = YFrac * -1
-		YFracString = str(YFrac)
-		XFracString = str(XFrac)
-		if XFrac == 1:
-			print(YFrac)
-		if XFrac != 1:
-			print(str(YFracString) + "/" + str(XFracString))
+	elif equation == "slope":
+		try:
+			X1 = int(input("X1: "))
+			Y1 = int(input("Y1: "))
+			X2 = int(input("X2: "))
+			Y2 = int(input("Y2: "))
+			Y = Y2-Y1
+			X = X2-X1
+			gcdXY = math.gcd(Y,X)
+			YFrac = Y/gcdXY
+			XFrac = X/gcdXY
+			if XFrac < 0 and YFrac < 0:
+				XFrac = XFrac * -1
+				YFrac = YFrac * -1
+			YFracString = str(YFrac)
+			XFracString = str(XFrac)
+			if XFrac == 1:
+				print(YFrac)
+			if XFrac != 1:
+				print(str(YFracString) + "/" + str(XFracString))
+		except Exception as exception5:
+			print("One or more invalid inputs were entered\n")
 	
 
 #squareroot
-	if equation == "squareroot" or equation == "sqrt" or equation == "square root":
-		numberTXT = input("Type the number: ")
-		number = int(numberTXT)
-		if number < 0:
-			print("This number cannot be rooted")
-		if number > 0:
-			numberRTD = math.sqrt(number)
-			checker = math.ceil(numberRTD)
-			if numberRTD - checker == 0:
-				print(numberRTD)
-			else:
-				print(reduceRoots(number))
+	elif equation == "squareroot" or equation == "sqrt" or equation == "square root":
+		try:
+			number = int(input("Type the number: "))
+			if number < 0:
+				print("This number cannot be rooted")
+			if number > 0:
+				numberRTD = math.sqrt(number)
+				checker = math.ceil(numberRTD)
+				if numberRTD - checker == 0:
+					print(numberRTD)
+				else:
+					print(reduceRoots(number))
+		except Exception as exception6:
+			print("One or more invalid inputs were entered\n")
 		
 #alphabetical order	
-	if equation == "alphabetical order" or equation == "alphaorder":
+	elif equation == "alphabetical order" or equation == "alphaorder":
 		while vari < 10:
 			alphaPhrase = input("Type your phrases in 1 at a time ('/done' to exit): ")
 			if alphaPhrase == "/done":
@@ -261,153 +274,160 @@ while vari < 10:
 	
 
 #Add Fractions
-	if equation == "fracadd" or equation == "add fractions" or equation == "fraction add" or equation == "addfrac":
-		Nu1TXT = input("Numerator1: ")
-		Nu1 = int(Nu1TXT)
-		deno1TXT = input("Denominator1: ")
-		deno1 = int(deno1TXT)
-		Nu2TXT = input("Numerator2: ")
-		Nu2 = int(Nu2TXT)
-		deno2TXT = input("Denominator2: ")
-		deno2 = int(deno2TXT)
-		FracAddLcm = lcm(deno1, deno2)
-		FracAddMul1 = FracAddLcm/deno1
-		FracAddMul2 = FracAddLcm/deno2
-		FracAddNu1 = Nu1 * FracAddMul1
-		FracAddNu2 = Nu2 * FracAddMul2
-		FracAddDeno = int(FracAddLcm)
-		FracAddNu = int(FracAddNu1 + FracAddNu2)
-		FracAddOut = str(FracAddNu) + "/" + str(FracAddDeno)
-		FracAddRedOut = str(fractioner(FracAddNu, FracAddDeno))
-		print(FracAddOut)
-		if FracAddOut != FracAddRedOut:
-			print(FracAddRedOut)
+	elif equation == "fracadd" or equation == "add fractions" or equation == "fraction add" or equation == "addfrac":
+		try:
+			Nu1 = int(input("Numerator1: "))
+			deno1 = int(input("Denominator1: "))
+			Nu2 = int(input("Numerator2: "))
+			deno2 = int(input("Denominator2: "))
+			FracAddLcm = lcm(deno1, deno2)
+			FracAddMul1 = FracAddLcm/deno1
+			FracAddMul2 = FracAddLcm/deno2
+			FracAddNu1 = Nu1 * FracAddMul1
+			FracAddNu2 = Nu2 * FracAddMul2
+			FracAddDeno = int(FracAddLcm)
+			FracAddNu = int(FracAddNu1 + FracAddNu2)
+			FracAddOut = str(FracAddNu) + "/" + str(FracAddDeno)
+			FracAddRedOut = str(fractioner(FracAddNu, FracAddDeno))
+			print(FracAddOut)
+			if FracAddOut != FracAddRedOut:
+				print(FracAddRedOut)
+		except Exception as exception7:
+			print("One or more invalid inputs were entered\n")
 		
 	
 
 #Subtract Fractions
-	if equation == "fracsub" or equation == "subtract fractions" or equation == "subfrac":
-		Nu1TXT = input("Numerator1: ")
-		Nu1 = int(Nu1TXT)
-		deno1TXT = input("Denominator1: ")
-		deno1 = int(deno1TXT)
-		Nu2TXT = input("Numerator2: ")
-		Nu2 = int(Nu2TXT)
-		deno2TXT = input("Denominator2: ")
-		deno2 = int(deno2TXT)
-		FracSubLcm = lcm(deno1, deno2)
-		FracSubMul1 = FracSubLcm/deno1
-		FracSubMul2 = FracSubLcm/deno2
-		FracSubNu1 = Nu1 * FracSubMul1
-		FracSubNu2 = Nu2 * FracSubMul2
-		FracSubDeno = int(FracSubLcm)
-		FracSubNu = int(FracSubNu1 - FracSubNu2)
-		FracSubOut = str(FracSubNu) + "/" + str(FracSubDeno)
-		FracSubRedOut =  str(fractioner(FracSubNu, FracSubDeno))
-		print(FracSubOut)
-		if FracSubOut != FracSubRedOut:
-			print(FracSubRedOut)
+	elif equation == "fracsub" or equation == "subtract fractions" or equation == "subfrac":
+		try:
+			Nu1 = int(input("Numerator1: "))
+			deno1 = int(input("Denominator1: "))
+			Nu2 = int(input("Numerator2: "))
+			deno2 = int(input("Denominator2: "))
+			FracSubLcm = lcm(deno1, deno2)
+			FracSubMul1 = FracSubLcm/deno1
+			FracSubMul2 = FracSubLcm/deno2
+			FracSubNu1 = Nu1 * FracSubMul1
+			FracSubNu2 = Nu2 * FracSubMul2
+			FracSubDeno = int(FracSubLcm)
+			FracSubNu = int(FracSubNu1 - FracSubNu2)
+			FracSubOut = str(FracSubNu) + "/" + str(FracSubDeno)
+			FracSubRedOut =  str(fractioner(FracSubNu, FracSubDeno))
+			print(FracSubOut)
+			if FracSubOut != FracSubRedOut:
+				print(FracSubRedOut)
+		except Exception as exception8:
+			print("One or more invalid inputs were entered\n")
+				
 	
 #Multiply Fractions	
-	if equation == "fracmult" or equation == "multiply fractions" or equation == "multfrac":
-		Nu1TXT = input("Numerator1: ")
-		Nu1 = int(Nu1TXT)
-		deno1TXT = input("Denominator1: ")
-		deno1 = int(deno1TXT)
-		Nu2TXT = input("Numerator2: ")
-		Nu2 = int(Nu2TXT)
-		deno2TXT = input("Denominator2: ")
-		deno2 = int(deno2TXT)
-		FracMultNu = int(Nu1 * Nu2)
-		FracMultDeno = int(deno1 * deno2)
-		FracMultOut = str(FracMultNu) + "/" + str(FracMultDeno)
-		FracMultRedOut = str(fractioner(FracMultNu, FracMultDeno))
-		print(FracMultOut)
-		if FracMultOut != FracMultRedOut:
-			print(FracMultRedOut)
+	elif equation == "fracmult" or equation == "multiply fractions" or equation == "multfrac":
+		try:
+			Nu1 = int(input("Numerator1: "))
+			deno1 = int(input("Denominator1: "))
+			Nu2 = int(input("Numerator2: "))
+			deno2 = int(input("Denominator2: "))
+			FracMultNu = int(Nu1 * Nu2)
+			FracMultDeno = int(deno1 * deno2)
+			FracMultOut = str(FracMultNu) + "/" + str(FracMultDeno)
+			FracMultRedOut = str(fractioner(FracMultNu, FracMultDeno))
+			print(FracMultOut)
+			if FracMultOut != FracMultRedOut:
+				print(FracMultRedOut)
+		except Exception as exception9:
+			print("One or more invalid inputs were entered\n")
 	
 
 #Divide Fractions	
-	if equation == "fracdiv" or equation == "divide fractions" or equation == "divfrac": 
-		Nu1TXT = input("Numerator1: ")
-		Nu1 = int(Nu1TXT)
-		deno1TXT = input("Denominator1: ")
-		deno1 = int(deno1TXT)
-		Nu2TXT = input("Numerator2: ")
-		Nu2 = int(Nu2TXT)
-		deno2TXT = input("Denominator2: ")
-		deno2 = int(deno2TXT)
-		FracDivNu = int(Nu1 * deno2)
-		FracDivDeno = int(deno1 * Nu2)
-		FracDivOut = str(FracDivNu) + "/" + str(FracDivDeno)
-		FracDivRedOut = str(fractioner(FracDivNu, FracDivDeno))
-		print(FracDivOut)
-		if FracDivOut != FracDivRedOut:
-			print(FracDivRedOut)
+	elif equation == "fracdiv" or equation == "divide fractions" or equation == "divfrac": 
+		try:
+			Nu1 = int(input("Numerator1: "))
+			deno1 = int(input("Denominator1: "))
+			Nu2 = int(input("Numerator2: "))
+			deno2 = int(input("Denominator2: "))
+			FracDivNu = int(Nu1 * deno2)
+			FracDivDeno = int(deno1 * Nu2)
+			FracDivOut = str(FracDivNu) + "/" + str(FracDivDeno)
+			FracDivRedOut = str(fractioner(FracDivNu, FracDivDeno))
+			print(FracDivOut)
+			if FracDivOut != FracDivRedOut:
+				print(FracDivRedOut)
+		except Exception as exception10:
+			print("One or more invalid inputs were entered\n")
 
 	
 #Lowest common multiple	
-	if equation == "lcm" or equation == "lowest common multiple":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		print(lcm(firstNumber, secondNumber))
+	elif equation == "lcm" or equation == "lowest common multiple":
+		try:
+			firstNumber = int(input("Type the first number you want to calculate: "))
+			secondNumber = int(input("Type the second number you want to calculate: "))
+			print(lcm(firstNumber, secondNumber))
+		except Exception as exception11:
+			print("One or more invalid inputs were entered\n")
 	
 #Greatest common divisor	
-	if equation == "gcd" or equation == "greatest common divisor":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		print(math.gcd(firstNumber, secondNumber))
-	
+	elif equation == "gcd" or equation == "greatest common divisor":
+		try:
+			firstNumber = int(input("Type the first number you want to calculate: "))
+			secondNumber = int(input("Type the second number you want to calculate: "))
+			print(math.gcd(firstNumber, secondNumber))
+		except Exception as exception12:
+			print("One or more invalid inputs were entered\n")			
+			
 #add	
-	if equation == "addition" or equation == "add" or equation == "+":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		print(firstNumber+secondNumber)
+	elif equation == "addition" or equation == "add" or equation == "+":
+		try:
+			firstNumber = float(input("Type the first number you want to calculate: "))
+			secondNumber = float(input("Type the second number you want to calculate: "))
+			print(removeDecimal(firstNumber + secondNumber))
+		except Exception as exception13:
+			print("One or more invalid inputs were entered\n")
 	
 #subtract	
-	if equation == "subtraction" or equation == "minus" or equation == "subtract" or equation == "-" or equation == "sub":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		print(firstNumber - secondNumber)
+	elif equation == "subtraction" or equation == "minus" or equation == "subtract" or equation == "-" or equation == "sub":
+		try:
+			firstNumber = float(input("Type the first number you want to calculate: "))
+			secondNumber = float(input("Type the second number you want to calculate: "))
+			print(removeDecimal(firstNumber - secondNumber))
+		except Exception as exception14:
+			print("One or more invalid inputs were entered\n")
 	
 #multiply	
-	if equation == "multiplication" or equation == "multiply" or equation == "times" or equation == "*":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		print(firstNumber * secondNumber)
+	elif equation == "multiplication" or equation == "multiply" or equation == "times" or equation == "*":
+		try:
+			firstNumber = float(input("Type the first number you want to calculate: "))
+			secondNumber = float(input("Type the second number you want to calculate: "))
+			print(removeDecimal(firstNumber * secondNumber))
+		except Exception as exception15:
+			print("One or more invalid inputs were entered\n")
 	
 #divide	
-	if equation == "division" or equation == "divide" or equation == "/":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		d = math.gcd(firstNumber, secondNumber)
-		firstNumberFraction = firstNumber/d
-		secondNumberFraction = secondNumber/d
-		de = Decimal(firstNumber/float(secondNumber))
-		print(str(firstNumberFraction) + "/" + str(secondNumberFraction) + "(" + str(de) + ")" )
+	elif equation == "division" or equation == "divide" or equation == "/":
+		try:
+			firstNumber = float(input("Type the first number you want to calculate: "))
+			secondNumber = float(input("Type the second number you want to calculate: "))
+			de = Decimal(firstNumber/secondNumber)
+			if math.ceil(firstNumber) == firstNumber and math.ceil(secondNumber) == secondNumber:
+				d = math.gcd(removeDecimal(firstNumber), removeDecimal(secondNumber))
+				firstNumberFraction = removeDecimal(firstNumber/d)
+				secondNumberFraction = removeDecimal(secondNumber/d)
+				print(str(firstNumberFraction) + "/" + str(secondNumberFraction) + "(" + str(de) + ")" )
+			else:
+				print(de)
+		except Exception as exception16:
+			print("One or more invalid inputs were entered\n")
 	
 #power	
-	if equation == "power" or equation == "to the power of":
-		firstNumberTXT = input("Type the first number you want to calculate: ")
-		firstNumber = int(firstNumberTXT)
-		secondNumberTXT = input("Type the second number you want to calculate: ")
-		secondNumber = int(secondNumberTXT)
-		print(firstNumber ** secondNumber)
+	elif equation == "power" or equation == "to the power of":
+		try:
+			firstNumber = float(input("Type the first number you want to calculate: "))
+			secondNumber = float(input("Type the second number you want to calculate: "))
+			print(removeDecimal(firstNumber ** secondNumber))
+		except Exception as exception17:
+			print("One or more invalid inputs were entered\n")
 	
 #end program	
-	if equation == "quit" or equation == "q" or equation == "done":
+	elif equation == "quit" or equation == "q" or equation == "done":
 		break
 		
 #no function

@@ -72,6 +72,25 @@ while vari < 10:
 			output = str(rootExp) + " root " + str(radArg)
 		return output
 	
+	def decToFrac(num):
+		wholeNumber = math.floor(num)
+		
+		count = 0
+		counter = Decimal(str(num)) - Decimal(str(math.floor(num)))
+		while counter / math.ceil(counter) != 1:
+			count = count + 1
+			counter = counter * 10
+		digitsADecimal = count
+		
+		numerator = int(counter)
+		i = 1
+		denominator = 1
+		while i <= digitsADecimal:
+			denominator = denominator * 10
+			i = i + 1
+		wholeNumber = wholeNumber * denominator
+		numerator = numerator + wholeNumber
+		return fractioner(numerator, denominator)
 
 
 
@@ -420,14 +439,14 @@ while vari < 10:
 		try:
 			firstNumber = float(input("Type the first number you want to calculate: "))
 			secondNumber = float(input("Type the second number you want to calculate: "))
-			de = Decimal(firstNumber/secondNumber)
+			de = (Decimal(str(firstNumber))/Decimal(str(secondNumber)))
 			if math.ceil(firstNumber) == firstNumber and math.ceil(secondNumber) == secondNumber:
 				d = math.gcd(removeDecimal(firstNumber), removeDecimal(secondNumber))
 				firstNumberFraction = removeDecimal(firstNumber/d)
 				secondNumberFraction = removeDecimal(secondNumber/d)
 				print(str(firstNumberFraction) + "/" + str(secondNumberFraction) + "(" + str(de) + ")" )
 			else:
-				print(de)
+				print(str(decToFrac(de)) + "(" + str(de) + ")")
 		except Exception as exception16:
 			print("One or more invalid inputs were entered\n")
 	
@@ -444,7 +463,7 @@ while vari < 10:
 	elif equation == "decimaltofraction" or equation == "dec2frac" or equation == "convertfraction":
 		try:
 			num = float(input("Type the decimal: "))
-			print(Fraction(num))
+			print(decToFrac(num))
 		except Exception as exception18:
 			print("One or more invalid inputs were entered\n")
 	

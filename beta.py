@@ -32,7 +32,9 @@ while vari < 10:
 		finalDenominator = denominator/theGCD
 		if finalDenominator == 1:
 			return int(finalNumerator)
-		if finalDenominator != 1:
+		elif finalDenominator == 0 or finalNumerator == 0:
+			return 0
+		elif finalDenominator != 1:
 			return str(int(finalNumerator)) + "/" + str(int(finalDenominator))
 			
 	def findFactors(number):
@@ -70,6 +72,25 @@ while vari < 10:
 			output = str(rootExp) + " root " + str(radArg)
 		return output
 	
+	def decToFrac(num):
+		wholeNumber = math.floor(num)
+		
+		count = 0
+		counter = Decimal(str(num)) - Decimal(str(math.floor(num)))
+		while counter / math.ceil(counter) != 1:
+			count = count + 1
+			counter = counter * 10
+		digitsADecimal = count
+		
+		numerator = int(counter)
+		i = 1
+		denominator = 1
+		while i <= digitsADecimal:
+			denominator = denominator * 10
+			i = i + 1
+		wholeNumber = wholeNumber * denominator
+		numerator = numerator + wholeNumber
+		return fractioner(numerator, denominator)
 
 
 
@@ -87,6 +108,7 @@ while vari < 10:
 		print("Add Fractions")
 		print("Addition")
 		print("Alphabetical Order")
+		print("Decimal To Fraction")
 		print("distance")
 		print("Divide Fractions")
 		print("Division")
@@ -115,6 +137,7 @@ while vari < 10:
 		print("Add Fractions: \"fracadd\"")
 		print("Addition: \"add\", \"+\"")
 		print("Alphabetical Order: \"alphaorder\"")
+		print("Decimal to Fraction: \"dec2frac\", \"ConvertFraction\"")
 		print("Distance: \"length\"")
 		print("Divide Fractions: \"divfrac\"")
 		print("Division: \"divide\", \"/\"")
@@ -255,7 +278,7 @@ while vari < 10:
 				numberRTD = math.sqrt(number)
 				checker = math.ceil(numberRTD)
 				if numberRTD - checker == 0:
-					print(numberRTD)
+					print(removeDecimal(numberRTD))
 				else:
 					print(reduceRoots(number))
 		except Exception as exception6:
@@ -280,18 +303,23 @@ while vari < 10:
 			deno1 = int(input("Denominator1: "))
 			Nu2 = int(input("Numerator2: "))
 			deno2 = int(input("Denominator2: "))
-			FracAddLcm = lcm(deno1, deno2)
-			FracAddMul1 = FracAddLcm/deno1
-			FracAddMul2 = FracAddLcm/deno2
-			FracAddNu1 = Nu1 * FracAddMul1
-			FracAddNu2 = Nu2 * FracAddMul2
-			FracAddDeno = int(FracAddLcm)
-			FracAddNu = int(FracAddNu1 + FracAddNu2)
-			FracAddOut = str(FracAddNu) + "/" + str(FracAddDeno)
-			FracAddRedOut = str(fractioner(FracAddNu, FracAddDeno))
-			print(FracAddOut)
-			if FracAddOut != FracAddRedOut:
-				print(FracAddRedOut)
+			if deno1 == 0:
+				print(fractioner(Nu2, deno2))
+			elif deno2 == 0:
+				print(fractioner(Nu1, deno1))
+			else:
+				FracAddLcm = lcm(deno1, deno2)
+				FracAddMul1 = FracAddLcm/deno1
+				FracAddMul2 = FracAddLcm/deno2
+				FracAddNu1 = Nu1 * FracAddMul1
+				FracAddNu2 = Nu2 * FracAddMul2
+				FracAddDeno = int(FracAddLcm)
+				FracAddNu = int(FracAddNu1 + FracAddNu2)
+				FracAddOut = str(FracAddNu) + "/" + str(FracAddDeno)
+				FracAddRedOut = str(fractioner(FracAddNu, FracAddDeno))
+				print(FracAddOut)
+				if FracAddOut != FracAddRedOut:
+					print(FracAddRedOut)
 		except Exception as exception7:
 			print("One or more invalid inputs were entered\n")
 		
@@ -304,18 +332,23 @@ while vari < 10:
 			deno1 = int(input("Denominator1: "))
 			Nu2 = int(input("Numerator2: "))
 			deno2 = int(input("Denominator2: "))
-			FracSubLcm = lcm(deno1, deno2)
-			FracSubMul1 = FracSubLcm/deno1
-			FracSubMul2 = FracSubLcm/deno2
-			FracSubNu1 = Nu1 * FracSubMul1
-			FracSubNu2 = Nu2 * FracSubMul2
-			FracSubDeno = int(FracSubLcm)
-			FracSubNu = int(FracSubNu1 - FracSubNu2)
-			FracSubOut = str(FracSubNu) + "/" + str(FracSubDeno)
-			FracSubRedOut =  str(fractioner(FracSubNu, FracSubDeno))
-			print(FracSubOut)
-			if FracSubOut != FracSubRedOut:
-				print(FracSubRedOut)
+			if deno1 == 0:
+				print(fractioner(Nu2, deno2))
+			elif deno2 == 0:
+				print(fractioner(Nu1, deno1))
+			else:
+				FracSubLcm = lcm(deno1, deno2)
+				FracSubMul1 = FracSubLcm/deno1
+				FracSubMul2 = FracSubLcm/deno2
+				FracSubNu1 = Nu1 * FracSubMul1
+				FracSubNu2 = Nu2 * FracSubMul2
+				FracSubDeno = int(FracSubLcm)
+				FracSubNu = int(FracSubNu1 - FracSubNu2)
+				FracSubOut = str(FracSubNu) + "/" + str(FracSubDeno)
+				FracSubRedOut =  str(fractioner(FracSubNu, FracSubDeno))
+				print(FracSubOut)
+				if FracSubOut != FracSubRedOut:
+					print(FracSubRedOut)
 		except Exception as exception8:
 			print("One or more invalid inputs were entered\n")
 				
@@ -406,14 +439,14 @@ while vari < 10:
 		try:
 			firstNumber = float(input("Type the first number you want to calculate: "))
 			secondNumber = float(input("Type the second number you want to calculate: "))
-			de = Decimal(firstNumber/secondNumber)
+			de = (Decimal(str(firstNumber))/Decimal(str(secondNumber)))
 			if math.ceil(firstNumber) == firstNumber and math.ceil(secondNumber) == secondNumber:
 				d = math.gcd(removeDecimal(firstNumber), removeDecimal(secondNumber))
 				firstNumberFraction = removeDecimal(firstNumber/d)
 				secondNumberFraction = removeDecimal(secondNumber/d)
 				print(str(firstNumberFraction) + "/" + str(secondNumberFraction) + "(" + str(de) + ")" )
 			else:
-				print(de)
+				print(str(decToFrac(de)) + "(" + str(de) + ")")
 		except Exception as exception16:
 			print("One or more invalid inputs were entered\n")
 	
@@ -424,6 +457,14 @@ while vari < 10:
 			secondNumber = float(input("Type the second number you want to calculate: "))
 			print(removeDecimal(firstNumber ** secondNumber))
 		except Exception as exception17:
+			print("One or more invalid inputs were entered\n")
+			
+#decimalToFraction
+	elif equation == "decimaltofraction" or equation == "dec2frac" or equation == "convertfraction":
+		try:
+			num = float(input("Type the decimal: "))
+			print(decToFrac(num))
+		except Exception as exception18:
 			print("One or more invalid inputs were entered\n")
 	
 #end program	

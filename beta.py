@@ -271,16 +271,18 @@ while vari < 10:
 #squareroot
 	elif equation == "squareroot" or equation == "sqrt" or equation == "square root":
 		try:
-			number = int(input("Type the number: "))
+			number = Decimal(input("Type the number: "))
 			if number < 0:
 				print("This number cannot be rooted")
-			if number > 0:
+			elif number != math.ceil(number):
+				print(math.sqrt(number))
+			elif number > 0:
 				numberRTD = math.sqrt(number)
-				checker = math.ceil(numberRTD)
-				if numberRTD - checker == 0:
+				if numberRTD - math.ceil(numberRTD) == 0:
 					print(removeDecimal(numberRTD))
 				else:
 					print(reduceRoots(number))
+			
 		except Exception as exception6:
 			print("One or more invalid inputs were entered\n")
 		
@@ -410,8 +412,8 @@ while vari < 10:
 #add	
 	elif equation == "addition" or equation == "add" or equation == "+":
 		try:
-			firstNumber = float(input("Type the first number you want to calculate: "))
-			secondNumber = float(input("Type the second number you want to calculate: "))
+			firstNumber = Decimal(input("Type the first number you want to calculate: "))
+			secondNumber = Decimal(input("Type the second number you want to calculate: "))
 			print(removeDecimal(firstNumber + secondNumber))
 		except Exception as exception13:
 			print("One or more invalid inputs were entered\n")
@@ -419,8 +421,8 @@ while vari < 10:
 #subtract	
 	elif equation == "subtraction" or equation == "minus" or equation == "subtract" or equation == "-" or equation == "sub":
 		try:
-			firstNumber = float(input("Type the first number you want to calculate: "))
-			secondNumber = float(input("Type the second number you want to calculate: "))
+			firstNumber = Decimal(input("Type the first number you want to calculate: "))
+			secondNumber = Decimal(input("Type the second number you want to calculate: "))
 			print(removeDecimal(firstNumber - secondNumber))
 		except Exception as exception14:
 			print("One or more invalid inputs were entered\n")
@@ -428,8 +430,8 @@ while vari < 10:
 #multiply	
 	elif equation == "multiplication" or equation == "multiply" or equation == "times" or equation == "*":
 		try:
-			firstNumber = float(input("Type the first number you want to calculate: "))
-			secondNumber = float(input("Type the second number you want to calculate: "))
+			firstNumber = Decimal(input("Type the first number you want to calculate: "))
+			secondNumber = Decimal(input("Type the second number you want to calculate: "))
 			print(removeDecimal(firstNumber * secondNumber))
 		except Exception as exception15:
 			print("One or more invalid inputs were entered\n")
@@ -437,8 +439,8 @@ while vari < 10:
 #divide	
 	elif equation == "division" or equation == "divide" or equation == "/":
 		try:
-			firstNumber = float(input("Type the first number you want to calculate: "))
-			secondNumber = float(input("Type the second number you want to calculate: "))
+			firstNumber = Decimal(input("Type the first number you want to calculate: "))
+			secondNumber = Decimal(input("Type the second number you want to calculate: "))
 			de = (Decimal(str(firstNumber))/Decimal(str(secondNumber)))
 			if math.ceil(firstNumber) == firstNumber and math.ceil(secondNumber) == secondNumber:
 				d = math.gcd(removeDecimal(firstNumber), removeDecimal(secondNumber))
@@ -453,8 +455,8 @@ while vari < 10:
 #power	
 	elif equation == "power" or equation == "to the power of":
 		try:
-			firstNumber = float(input("Type the first number you want to calculate: "))
-			secondNumber = float(input("Type the second number you want to calculate: "))
+			firstNumber = Decimal(input("What is the coefficient?: "))
+			secondNumber = Decimal(input("What is the exponent?: "))
 			print(removeDecimal(firstNumber ** secondNumber))
 		except Exception as exception17:
 			print("One or more invalid inputs were entered\n")
@@ -462,7 +464,7 @@ while vari < 10:
 #decimalToFraction
 	elif equation == "decimaltofraction" or equation == "dec2frac" or equation == "convertfraction":
 		try:
-			num = float(input("Type the decimal: "))
+			num = Decimal(input("Type the decimal: "))
 			print(decToFrac(num))
 		except Exception as exception18:
 			print("One or more invalid inputs were entered\n")

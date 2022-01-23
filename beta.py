@@ -157,7 +157,6 @@ while vari < 10:
 		print("")
 		
 #start of sections
-
 #quadratic formula
 	elif equation == "quadratic formula" or equation == "roots" or equation == "quadform":
 		try:
@@ -466,7 +465,17 @@ while vari < 10:
 			print(decToFrac(num))
 		except Exception as exception18:
 			print("One or more invalid inputs were entered\n")
-	
+
+#favorites
+	elif equation == "changeFavorites" or equation  == "favorites":
+		try:
+			fchq = int(input("Type what preset you would like to change (1, 2, 3, 4, 5): "))
+			if fchq == 1:
+				
+		except Exception as exception19:
+			print("One or more invalid inputs were entered\n")
+
+			
 #end program	
 	elif equation == "quit" or equation == "q" or equation == "done":
 		break
